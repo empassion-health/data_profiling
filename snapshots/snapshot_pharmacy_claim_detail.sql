@@ -1,13 +1,10 @@
 {% snapshot snapshot_pharmacy_claim_detail %}
 
-{{ config(
-  enabled= false
-) }}
-
 {%- if (var('data_profiling_schema',None) != None or (var('data_profiling_schema',None) == None and var('tuva_schema_prefix',None) == None))  -%}
     {{ config(
         target_database = var('data_profiling_database',var('tuva_database','tuva'))
       , target_schema = var('data_profiling_schema','data_profiling')
+      , enabled = false
       , strategy = 'timestamp'
       , updated_at = 'run_date'
       , unique_key = 'claim_id||claim_line_number||run_date'
@@ -18,6 +15,7 @@
     {{ config(
         target_database = var('data_profiling_database',var('tuva_database','tuva'))
       , target_schema = var('tuva_schema_prefix')~'_data_profiling'
+      , enabled = false
       , strategy = 'timestamp'
       , updated_at = 'run_date'
       , unique_key = 'claim_id||claim_line_number||run_date'
