@@ -1,5 +1,9 @@
 {% snapshot snapshot_pharmacy_claim_detail %}
 
+{{ config(
+  enabled= false
+) }}
+
 {%- if (var('data_profiling_schema',None) != None or (var('data_profiling_schema',None) == None and var('tuva_schema_prefix',None) == None))  -%}
     {{ config(
         target_database = var('data_profiling_database',var('tuva_database','tuva'))
