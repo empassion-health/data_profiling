@@ -247,7 +247,7 @@ joined as (
          left join seed_icd_10_cm
             on medical_claim.diagnosis_code_1 = seed_icd_10_cm.icd_10_cm
          left join seed_ms_drg
-            on medical_claim.ms_drg_code = seed_ms_drg.ms_drg_code
+            on cast(medical_claim.ms_drg_code as int) = cast(seed_ms_drg.ms_drg_code as int)
          left join seed_place_of_service
             on medical_claim.place_of_service_code = seed_place_of_service.place_of_service_code
          left join seed_present_on_admission
