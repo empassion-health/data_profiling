@@ -52,7 +52,7 @@ with eligibility_src as (
         , {{ cast_string_or_varchar('null') }} as city
         , {{ cast_string_or_varchar('null') }} as state
         , {{ cast_string_or_varchar('null') }} as zip_code
-        , {{ cast_string_or_varchar('null') }} as phone
+        , {{ cast_string_or_varchar('null') }} as primary_phone
         , {{ cast_string_or_varchar('null') }} as data_source
     limit 0
 
@@ -83,7 +83,7 @@ eligibility_with_row_hash as (
                 , 'city'
                 , 'state'
                 , 'zip_code'
-                , 'phone'
+                , 'primary_phone'
                 , 'data_source'
                ]) }}
            as row_hash
